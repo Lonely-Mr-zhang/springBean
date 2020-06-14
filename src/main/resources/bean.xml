@@ -25,7 +25,24 @@
     <!-- <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>-->
 
     <!--第三种方式：使用工厂中的静态方法创建对象，并存入Spring容器中-->
-    <bean id="accountService"  class="io.github.lonelyMrZhang.factory.StaticFactory" factory-method="getAccountService"></bean>
+<!--    <bean id="accountService"  class="io.github.lonelyMrZhang.factory.StaticFactory" factory-method="getAccountService"></bean>-->
+
+
+
+    <!-- bean的作用范围调整
+        bean标签的scope属性：
+            作用：用于指定bean的作用范围
+            取值：
+                singleton；单例的（默认值）
+                prototype：多例的
+                request：作用web应用的请求范围
+                session：作用web应用的会话范围
+                global-session：作用集群web环境的会话范围（全局会话范围），当不是集群环境时，它就是seesion。
+                    例如：1、用户登陆时由A服务器响应。响应内容包括验证码
+                        2、用户之后请求其他页面时，都会携带验证码，但是之后的请求不一定是A服务器响应，可能是另一台B服务器响应，
+                        此时B服务器也知道之前用户登陆时返回的验证码，这个验证码就存储在全局  global-session中
+    -->
+    <bean id="accountService" class="io.github.lonelyMrZhang.service.impl.AccountServiceImpl" scope="singleton"></bean>
 
 
 </beans>
