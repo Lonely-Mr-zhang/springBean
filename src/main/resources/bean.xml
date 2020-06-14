@@ -20,9 +20,9 @@
 
     <!--第二种方式：使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入Spring容器）-->
     <!-- 1、先创建工厂类-->
-    <!--    <bean id="instanceFactory" class="io.github.lonelyMrZhang.factory.InstanceFactory"></bean>-->
+    <!-- <bean id="instanceFactory" class="io.github.lonelyMrZhang.factory.InstanceFactory"></bean>-->
     <!-- 2、再在要创建对象的bean标签中，指定要可以创建对象的工厂，及使用工厂中的那个方法进行创建-->
-    <!--    <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>-->
+    <!-- <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>-->
 
     <!--第三种方式：使用工厂中的静态方法创建对象，并存入Spring容器中-->
     <bean id="accountService"  class="io.github.lonelyMrZhang.factory.StaticFactory" factory-method="getAccountService"></bean>
