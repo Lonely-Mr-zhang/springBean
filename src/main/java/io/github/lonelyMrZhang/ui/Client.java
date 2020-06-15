@@ -16,20 +16,21 @@ import org.springframework.core.io.Resource;
 public class Client {
 
     /**
-     * 核心容器构建的两种方式
+     * Bean对象的生命周期
      *
      * @param args
      */
     public static void main(String[] args) {
 
         //1、获取核心容器
-        ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
-
+//        ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
+        //ApplicationContext中没有关闭方法，只有实现类ClassPathXmlApplicationContext中close方法
+        ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");
 
         //2、根据id获取对象
         IAccountService accountService = (IAccountService) ac.getBean("accountService");
+        accountService.saveAccount();
 
-        System.out.println(accountService);
-
+        ac.close();
     }
 }

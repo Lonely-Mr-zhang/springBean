@@ -11,11 +11,23 @@ import io.github.lonelyMrZhang.service.IAccountService;
  */
 public class AccountServiceImpl implements IAccountService {
 
-//    public AccountServiceImpl(String temp){
-//        System.out.println("创建了AccountServiceImpl对象");
-//    }
+    public AccountServiceImpl(String temp){
+        System.out.println("创建了AccountServiceImpl对象");
+    }
+
+    public AccountServiceImpl(){
+        System.out.println("创建了AccountServiceImpl对象");
+    }
 
     public void saveAccount() {
         System.out.println("保存了对象");
+    }
+
+    public void init(){
+        System.out.println("对象初始化了");
+    }
+
+    public void destroy(){
+        System.out.println("对象销毁了");
     }
 }

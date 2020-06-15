@@ -25,8 +25,7 @@
     <!-- <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>-->
 
     <!--第三种方式：使用工厂中的静态方法创建对象，并存入Spring容器中-->
-<!--    <bean id="accountService"  class="io.github.lonelyMrZhang.factory.StaticFactory" factory-method="getAccountService"></bean>-->
-
+    <!--    <bean id="accountService"  class="io.github.lonelyMrZhang.factory.StaticFactory" factory-method="getAccountService"></bean>-->
 
 
     <!-- bean的作用范围调整
@@ -42,7 +41,26 @@
                         2、用户之后请求其他页面时，都会携带验证码，但是之后的请求不一定是A服务器响应，可能是另一台B服务器响应，
                         此时B服务器也知道之前用户登陆时返回的验证码，这个验证码就存储在全局  global-session中
     -->
-    <bean id="accountService" class="io.github.lonelyMrZhang.service.impl.AccountServiceImpl" scope="singleton"></bean>
+    <!--    <bean id="accountService" class="io.github.lonelyMrZhang.service.impl.AccountServiceImpl" scope="singleton"></bean>-->
+
+    <!-- 单例对象：
+            出生：当容器创建时对象出生
+            存活：只要容器还在，对象一直存活
+            死亡：容器销毁，对象死亡
+            总结：单例对象的生命周期和容器相同
+
+    <bean id="accountService" class="io.github.lonelyMrZhang.service.impl.AccountServiceImpl" scope="singleton"
+    init-method="init" destroy-method="destroy"></bean>
+
+         多例对象：
+            出生：当我们使用对象时，Spring为我们创建
+            存活：对象只要在使用过程中就一直活着
+            死亡：当对象长时间不用，且没有别的对象引用时，由java的垃圾回收器回收
+
+    -->
+
+    <bean id="accountService" class="io.github.lonelyMrZhang.service.impl.AccountServiceImpl" scope="prototype"
+    init-method="init" destroy-method="destroy"></bean>
 
 
 </beans>
